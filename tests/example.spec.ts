@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { allure } from 'allure-playwright';
 
 test('has title', async ({ page }) => {
   await page.goto('https://playwright.dev/');
@@ -7,7 +8,9 @@ test('has title', async ({ page }) => {
   await expect(page).toHaveTitle(/Playwright/);
 });
 
-test('get started link', async ({ page }) => {
+test('get started link', {
+  tag: '@smoke',}, async ({ page }) => {
+  await allure.owner("John Doe");
   await page.goto('https://playwright.dev/');
 
   // Click the get started link.

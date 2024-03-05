@@ -1,4 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
+import { testPlanFilter } from 'allure-playwright/dist/testplan';
+import * as os from "os";
 
 /**
  * Read environment variables from file.
@@ -10,7 +12,10 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  timeout: 30000,
+  globalTimeout: 600000,
   testDir: './tests',
+ 
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -20,13 +25,30 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  grep: testPlanFilter(),
+  reporter: [
+    ['list'],
+    ['allure-playwright',{
+      detail: true,
+        outputFolder: 'allure-results',
+        suiteTitle: true,
+        environmentInfo: {
+          framework: 'Playwright',
+          os_platform: os.platform(),
+          os_release: os.release(),
+          os_version: os.version(),
+          node_version: process.version,
+        },
+    }],
+    ['html']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    screenshot: 'only-on-failure', 
+    video: 'retain-on-failure',
     trace: 'on-first-retry',
   },
 
