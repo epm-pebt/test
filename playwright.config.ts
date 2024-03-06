@@ -1,5 +1,4 @@
 import { defineConfig, devices } from '@playwright/test';
-import { testPlanFilter } from 'allure-playwright/dist/testplan';
 import * as os from "os";
 
 /**
@@ -25,7 +24,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  grep: testPlanFilter(),
+  
   reporter: [
     ['list'],
     ['allure-playwright',{
