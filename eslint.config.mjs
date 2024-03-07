@@ -9,5 +9,12 @@ export default tseslint.config({
         ...tseslint.configs.recommended,
         playwright.configs['flat/recommended']
     ],
-    ignores: ['node_modules/', 'playwright.config.ts', '.husky/']
+    ignores: [
+        'node_modules/',
+        'playwright.config.ts',
+        '.husky/',
+        'allure-results/',
+        'allure-report/',
+        'playwright-report/'
+    ]
 });
