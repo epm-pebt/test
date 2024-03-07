@@ -10,7 +10,7 @@
         "test:debug": "playwright test --debug",
         "test:ui": "playwright test --ui",
         "test:smoke": " playwright test --grep @smoke",
-        "allure:report": " allure generate allure-results",
+        "allure:report": "allure generate allure-results --clean -o allure-report",
         "lint": "eslint .",
         "format": "prettier --write \"**/*.+(js|ts|cjs|json|mjs)\"",
         "check-format": "prettier --check \"**/*.+(js|ts|cjs|json|mjs)\"",
