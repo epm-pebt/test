@@ -7,5 +7,5 @@
     "singleQuote": true,
     "tabWidth": 4,
     "trailingComma": "none",
-    "endOfLine": "crlf"
+    "endOfLine": "lf"
 }

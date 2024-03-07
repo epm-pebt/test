@@ -5,11 +5,13 @@ test('has title', async ({ page }) => {
     await page.goto('https://playwright.dev/');
 
     // Expect a title "to contain" a substring.
+
     await expect(page).toHaveTitle(/Playwright/);
 });
 
 test('get started link', { tag: '@smoke' }, async ({ page }) => {
     await allure.owner('John Doe');
+
     page.goto('https://playwright.dev/');
 
     // Click the get started link.
