@@ -5,7 +5,7 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "clean": "rimraf ./allure-results ./allure-report",
+        "clean": "rm -R -f allure-report/* && rm -R -f allure-results/*",
         "test": "playwright test",
         "test:debug": "playwright test --debug",
         "test:ui": "playwright test --ui",
