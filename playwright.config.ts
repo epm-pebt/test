@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
 import * as os from 'os';
 
 /**
@@ -6,13 +7,15 @@ import * as os from 'os';
  * https://github.com/motdotla/dotenv
  */
 // require('dotenv').config();
+dotenv.config({
+    path: `.env`
+});
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-    timeout: 30000,
-    globalTimeout: 600000,
+    timeout: 3000,
     testDir: './tests',
 
     /* Run tests in files in parallel */

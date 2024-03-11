@@ -9,6 +9,9 @@ export default tseslint.config({
         ...tseslint.configs.recommended,
         playwright.configs['flat/recommended']
     ],
+    rules: {
+        'no-console': ['error', { allow: ['error'] }]
+    },
     ignores: [
         'node_modules/',
         'playwright.config.ts',
